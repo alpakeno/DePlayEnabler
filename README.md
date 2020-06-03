@@ -23,6 +23,9 @@ To disable the plugin, change sd0 or ux0 path, go to and open 'ur0:tai/deplayena
 # Credits:
 
 Original idea and works by GrapheneCt.
+
 Plugin made with help from folks at the CBPS discord: https://discord.gg/2nDCbxJ
+
 Specially @Princess of TB, @Goddess of Sleeping and others folks too.
+
 Thank you all.
