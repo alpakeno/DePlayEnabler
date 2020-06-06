@@ -15,7 +15,7 @@ ur0:tai/deplayenabler.suprx
 
 # Extra:
 
-To browse all folders, type the root path only, for example ux0: without a any folder name. 
+To browse all folders, type the root path only, for example ux0: without any folder name. 
 
 To disable the plugin, change sd0 or ux0 path, go to and open 'ur0:tai/deplayenabler.txt' using VitaShell.
 
