@@ -24,9 +24,10 @@ To disable the plugin, change sd0 or ux0 path, go to and open 'ur0:tai/deplayena
 
 Original idea and works by GrapheneCt.
 
+RegMgrGetKeyInt patch by SilicaAndPina.
+
 Plugin made with help from folks at the CBPS discord: https://discord.gg/2nDCbxJ
 
-Specially @Princess of TB, @Goddess of Sleeping and others folks too.
-Finally @Queen Devbot for the plugin's name idea.
+Specially @Princess of TB, @Goddess of Sleeping and others folks too, @Queen Devbot for the plugin's name idea.
 
 Thank you all.
