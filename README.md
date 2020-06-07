@@ -27,5 +27,6 @@ Original idea and works by GrapheneCt.
 Plugin made with help from folks at the CBPS discord: https://discord.gg/2nDCbxJ
 
 Specially @Princess of TB, @Goddess of Sleeping and others folks too.
+Finally @Queen Devbot for the plugin's name idea.
 
 Thank you all.
