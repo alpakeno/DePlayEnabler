@@ -26,7 +26,7 @@ Original idea and works by GrapheneCt.
 
 RegMgrGetKeyInt patch by SilicaAndPina.
 
-Plugin made with help from folks at the CBPS discord: https://discord.gg/2nDCbxJ
+Plugin made with help from folks at the CBPS discord: https://discord.cbps.xyz
 
 Specially @Princess of TB, @Goddess of Sleeping and others folks too, @Queen Devbot for the plugin's name idea.
 
