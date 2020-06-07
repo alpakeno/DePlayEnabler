@@ -1,9 +1,10 @@
 /*
   DePlayEnabler plugin by Alpakeno.
   Enable video debug play mode with the ability to change sd0 and ux0 folder path from configuration file.
-  Original idea and works by GrapheneCt.
-  Plugin made with help from folks at the: CBPS discord: https://discord.gg/2nDCbxJ
-  Specially @Princess of TB, @Goddess of Sleeping and others folks too.
+  RegMgrGetKeyInt patch by SilicaAndPina.
+  Plugin made with help from folks at the CBPS discord: https://discord.cbps.xyz
+  Specially @Princess of TB, @Goddess of Sleeping and others folks too, @Queen Devbot for the plugin's name idea.
+  Thank you all.
 
   This program is free software: you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,12 +20,8 @@
   along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#include <psp2/io/fcntl.h>
-#include <psp2/kernel/clib.h>
-#include <psp2/kernel/modulemgr.h>
-#include <psp2/sysmodule.h>
-#include <string.h>
 #include <stdlib.h>
+#include <vitasdk.h>
 #include <taihen.h>
 
 #define CONFIG_PATH "ur0:/tai/deplayenabler.txt"
@@ -49,7 +46,7 @@ static char *devices[] = {
     "ur0:",
     "ux0:",
     "xmc0:",
-	"vd0:",
+    "vd0:",
 };
 
 #define N_DEVICES (sizeof(devices) / sizeof(char **))
@@ -76,12 +73,12 @@ void removeSpaces(char *str) {
 }
 
 int checkName(const char *token, const char *name) {
-	return (sceClibStrncmp(token, name, strlen(name)) == 0);
+	return (sceClibStrncmp(token, name, sce_paf_private_strlen(name)) == 0);
 }
 
 char *getValue(char *token){
 	char *cfgvalue = (char*)calloc(1, sizeof(token));
-	cfgvalue = (strchr(token, '=')) + 1;
+	cfgvalue = (sce_paf_private_strchr(token, '=')) + 1;
 	return cfgvalue;
 }
 
@@ -89,7 +86,7 @@ void saveConfig(const char *path) {
 	SceUID fd;
 	fd = sceIoOpen(path, SCE_O_CREAT | SCE_O_WRONLY, 6);
 	if (fd >= 0) {
-		sceIoWrite(fd, CONFIG_CONT, strlen(CONFIG_CONT));
+		sceIoWrite(fd, CONFIG_CONT, sce_paf_private_strlen(CONFIG_CONT));
 		sceIoClose(fd);
 	}
 }
@@ -105,11 +102,11 @@ int loadConfig(const char *path) {
 	sceClibMemset(conf_buff, 0, 256);	
 	sceIoRead(fd, conf_buff, 256);
 	sceIoClose(fd);
-	char *token = strtok(conf_buff, "\r\n");
+	char *token = sce_paf_private_strtok(conf_buff, "\r\n");
 	char *token_trimed = token;
 	while (token != NULL) {
 		removeSpaces(token_trimed);
-		if (strlen(token_trimed) > 0) {
+		if (sce_paf_private_strlen(token_trimed) > 0) {
 			if (token_trimed[0] != '#') {
 				if (checkName(token_trimed, "USE")) {
 					sceClibSnprintf(enabled, sizeof(enabled), getValue(token));
@@ -120,7 +117,7 @@ int loadConfig(const char *path) {
 				}	
 			}
 		}
-		token = strtok(NULL, "\r\n");
+		token = sce_paf_private_strtok(NULL, "\r\n");
 		token_trimed = token;
 	}
 	int i = 0, found_sd0 = -1, found_ux0 = -1;
