@@ -19,11 +19,11 @@ add_executable(deplayenabler
 )
 
 target_link_libraries(deplayenabler
-  k
   taihen_stub
   SceLibKernel_stub
   SceIofilemgr_stub
   SceSysmodule_stub
+  ScePaf_stub_weak
   SceKernelModulemgr_stub
 )
 
